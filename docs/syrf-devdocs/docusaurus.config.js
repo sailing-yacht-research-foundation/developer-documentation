@@ -84,6 +84,15 @@ module.exports = {
               href: 'https://github.com/sailing-yacht-research-foundation',
             },
           ],
+        },
+        {
+          title: 'Analytics',
+          items:[
+            {
+              label:'Useage',
+              href:'https://analytics.syrf.io/share/l6RXRJYi/Developer%20Documentation'
+            }
+          ]
         }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Sailing Yacht Research Foundation.`,

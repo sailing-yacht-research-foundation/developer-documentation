@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Introduction
 
+<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
+
 ## Purpose and Audience
 
 ![Alt Text](https://media.giphy.com/media/o0vwzuFwCGAFO/source.gif)

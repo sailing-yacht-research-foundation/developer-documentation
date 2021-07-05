@@ -17,7 +17,6 @@ Then navigate to localhost:3000 on your machine.
 Reference doc todo:
 
 * Finish generic guides.
-* Add Umami analytics with a public link in the footer.
 * Finish platform guides in this order:
     * Websocket/REST
     * iOS
@@ -30,7 +29,6 @@ Reference doc todo:
     * Use a combination of sed commands and iFrames to display the API docs within docusaurus.
 * Add [search](https://docsearch.algolia.com/)
 * Host on AWS.
-* Open source the docs in a separate repo (or create a different repo for the developer login site).
 * Update build script to push new docs to aws. Include a 'test/local/preview' option in the script. 
 * Document how to run the script.
 * Add some cool examples to the showcase page.

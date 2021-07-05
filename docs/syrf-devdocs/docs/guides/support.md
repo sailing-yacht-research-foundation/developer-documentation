@@ -4,6 +4,8 @@ sidebar_position: 2
 
 # Support
 
+<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
+
 ![Alt Text](https://media.giphy.com/media/3oKIPsU8OC7JhkvY8U/giphy.gif)
 
 We get it - reading documentation isn't as fun as writing code.
