@@ -17,6 +17,7 @@ Then navigate to localhost:3000 on your machine.
 Reference doc todo:
 
 * Finish generic guides.
+* Add Umami analytics with a public link in the footer.
 * Finish platform guides in this order:
     * Websocket/REST
     * iOS
