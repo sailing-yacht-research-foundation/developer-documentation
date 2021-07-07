@@ -5,13 +5,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'SYRF Developer Guides and API Reference',
   tagline: 'Build the future of sailing sports.',
-  url: 'https://developers.syrf.io/documentation',
-  baseUrl: '/',
+  url: 'https://sailing-yacht-research-foundation.github.io',
+  baseUrl: '/sailing-yacht-research-foundation.github.io/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  plugins: [
+    require.resolve('@cmfcmf/docusaurus-search-local')
+  ],
   favicon: 'img/favicon.ico',
   organizationName: 'sailing-yacht-research-foundation', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  projectName: 'sailing-yacht-research-foundation.github.io', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'SYRF Developer Guides and API Reference',
@@ -96,6 +99,14 @@ module.exports = {
         }
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Sailing Yacht Research Foundation.`,
+    },
+    announcementBar: {
+      id: 'announcementBar-1', // Increment on change
+      backgroundColor: '#ff0000', // Defaults to `#fff`.
+      textColor: '#ffffff', // Defaults to `#000`.
+      isCloseable: false, // Defaults to `true`.
+      content:
+        'This is the alpha version of our docs. Do not assume any accuracy.',
     },
     prism: {
       theme: lightCodeTheme,
