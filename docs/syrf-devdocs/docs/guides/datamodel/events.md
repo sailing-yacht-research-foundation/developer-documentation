@@ -9,7 +9,7 @@ sidebar_position: 2
 Events provide a means to understand how vessels are interacting with courses. Geospatial calculations are geodesic. 
 
 ## `VesselPointRounding`
-This event occurs when a vessel crosses the imaginary line drawn from a course geometry point upwind towards the direction the wind is coming from.
+This event occurs when a vessel crosses the imaginary line drawn from a course geometry point upwind or downwind towards the direction the wind is coming from or to.
 The imaginary line is 100m long. 
 
 ## Attributes

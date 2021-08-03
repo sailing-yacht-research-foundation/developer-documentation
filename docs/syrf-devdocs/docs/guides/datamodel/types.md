@@ -24,9 +24,11 @@ Vessels are physical objects that float on the water. They may have a crew of 1 
 ### Attributes
 - `id`, **REQUIRED**, an identifier provided by you the developer that is unique within a `VesselParticipantGroup`. (A `VesselParticipantGroup`can't have two participants with the same id.)
 - `lengthInMeters`,  **REQUIRED**, the length in meters.
-- `globalId` an optional identifier provided by the developer if they wish to track a boat between multiple events.
-- `publicName`, **REQUIRED**, a public name to be used on a map view of the race that identifies the vessel. This could be the boat name or a team name.
+- `globalId` an optional identifier provided by the developer if they wish to track a vessel between multiple events.
+- `publicName`, **REQUIRED**, a public name to be used on a map view of the race that identifies the vessel. This could be the vessel name or a team name.
 - `orcJsonPolars`, an optional developer provided JSON object provided for PCS ranking within a `VesselParticipantGroup`. 
+- `totValue`, a supplied ToT value to use in ToT.
+- `todValue`, a supplied ToD value to use in ToD.
 
 ## `VesselParticipants`
 Associates an array of human participants to a vessel for a specific `CompetitionUnit`. 
@@ -37,7 +39,7 @@ Associates an array of human participants to a vessel for a specific `Competitio
 - `participants`, **REQUIRED**, an array of `Participant`s who are on the vessel.
 
 ## `CalendarEvent`
-A `CalendarEvent` object refers to an object that one would put on their calendar. What are colloquially called “series”, “races”, “regattas”, and “events” could all have a `CalendarEvent` object associated with them. For instance, a regatta management app may chose to use a `CalendarEvent` for a summer long series, or numerous `CalendarEvent`s for each specific Wednesday night race. A `CalendarEvent` binds a collection of RaceUnits. `CalendarEvent`s don’t have timestamps because they are fuzzy. Unlike a race (or `RaceUnit`) which has a specific start time that matters for purposes of scoring, `CalendarEvent`s have an `ApproximateStartTime`.
+A `CalendarEvent` object refers to an object that one would put on their calendar. What are colloquially called “series”, “races”, “regattas”, and “events” could all have a `CalendarEvent` object associated with them. For instance, a regatta management app may chose to use a `CalendarEvent` for a summer long series, or numerous `CalendarEvent`s for each specific Wednesday night race. A `CalendarEvent` binds a collection of CompetitionUnits. `CalendarEvent`s don’t have timestamps because they are fuzzy. Unlike a race (or `CompetitionUnit`) which has a specific start time that matters for purposes of scoring, `CalendarEvent`s have an `approximateStartTime`.
 
 ### Attributes
 - `name`, **REQUIRED**, the name of the calendar event.
@@ -73,7 +75,7 @@ Associates an array of `VesselParticipants` to a specific `CompetitionUnit`.
 
 
 ## `GroundWindObservation`
-A developer supplied (maybe from an end user) observation of the wind measured from a fixed or anchored platform (the land, an anchored and settled vessel, a cemented dock, etc).
+A developer supplied (maybe from an end user) observation of the wind measured from a fixed or anchored platform (the land, an anchored and settled vessel, a cemented dock, etc). The difference between this data and vessel observed data is that this data comes from user input whereas vessel observed values come from phone gps, or vessel instruments.
 
 ### Attributes
 - `speedKts`, **REQUIRED**, the wind speed in kts.
@@ -88,7 +90,7 @@ A developer supplied (maybe from an end user) observation of the wind measured f
 
 
 ## `AnchoredCurrentObservation`
-A developer supplied (maybe from an end user) observation of the current measured from a fixed or anchored platform (the land, an anchored and settled vessel, a cemented dock, etc).
+A developer supplied (maybe from an end user) observation of the current measured from a fixed or anchored platform (the land, an anchored and settled vessel, a cemented dock, etc). The difference between this data and vessel observed data is that this data may come from user input whereas vessel observed values come from phone gps, or vessel instruments.
 
 ### Attributes
 - `speedKts`, **REQUIRED**, the current speed in kts.
@@ -134,22 +136,52 @@ One course may be used by many `CompetitionUnit`s, but each `CompetitionUnit` mu
 - `unsequencedTimedGeometry`, similar to unsequencedUntimedGeometry except that each geometry segment has a valid start and stop time. This can be used for Super Mario type coin collection for instance.
 
 ## `VesselObservedData`
-A convenience type that holds a variety of data for a `VesselParticipant`.
+A convenience type that holds a variety of data for a `VesselParticipant`. This data comes from a phone, vessel instrumentation, or is reported via our APIs by the client app.
+It symbolizes data "known to be true because it was measured." Notice that some of these valuse are themselves calculated by the client app or instrumentation. For instance a vessel may have a windvane that tells the apparent wind angle as the vessel moves through the water (not the "true wind angle"). The vessel's instruments may then use internal knowledge about the vessel's speed and heading to calculate the true wind direction and report that up to us. The difference between this data type and `GroundWindObservation` and `AnchoredCurrentObservation` is that this data comes from instrumentation or platform APIs. 
+
 
 ### Attributes
 - `vesselParticipant`, autogenerated FK on `VesselParticipant`.
-- `twa`, twa from the instruments.
-- `cog`, cog from instruments.
-- `sog`, sog from instruments.
-- `setDrift`, set and drift from instruments.
+- `twa`, true wind angle to the centerline of the vessel, according to the instruments. The number of degrees clockwise from the heading of the vessel that the wind is blowing from.
+- `twdMagnetic`, true wind direction according to the instruments in degrees from magnetic north.
+- `twsKts`, true wind speed in kts according to the instruments.
+- `headingMagnetic`, the magnetic direction that the vessel is pointing in.
+- `latitude`, the WGS84 latitude at time = timestampUnixMS. If lat is present, lon must be present or data should be thrown out.
+- `longitude`, the WGS84 longitude at time = timestampUnixMS. If lon is present, lat must be present or data should be thrown out.
+- `airPressureMB`, the air pressure in MB.
+- `awa`, the apparent wind angle measured in degrees from the centerline of the vessel.
+- `awsKts`, the apparent wind speed measured in kts.
+- `awdMagnetic`, the apparent wind direction measured in magnetic degrees from magnetic north.
+- `cogMagnetic`, course over ground from instruments.
+- `sogKts`, speed over ground from instruments.
+- `setDriftKts`, set and drift from instruments.
 - `ellapsedTime`, how long the vessel has been racing.
+- `timestampUnixMS`, **REQUIRED**, the Unix epoch timestamp that the data was collected. 
+
 
 ## `VesselDerivedData`
-Data that has to be calculated from other data or otherwise interpolated.
+Data that has to be calculated from other data or otherwise interpolated. Much of this may be calculated by our "analysis engine" with data provided by models, or observed values or both. For instance a mobile app is not usually going to have instrument data with accurate wind information. We expect most observed value to be sent by producers, where as most derived data will be sent to consumers. 
 
 ### Attributes
 - `correctedTimes`, a dictionary of corrected times where the keys are a methodology (PCS, ToD, ToT, protest) and the values are the corrected times.
-- `twa`, calculated twa models.
-- `cog`, calculated cog from positions.
-- `sog`, calculated sog from positions.
-- `setDrift`, set and drift from current models.
+- `vesselParticipant`, autogenerated FK on `VesselParticipant`.
+- `twa`, true wind angle to the centerline of the vessel, according to some calculation. 
+- `twdMagnetic`, true wind direction according to a model or some calculation in degrees from magnetic north.
+- `twsKts`, true wind speed in kts according to a model or some calculation.
+- `headingMagnetic`, the magnetic direction that the vessel is pointing in.
+- `latitude`, the WGS84 latitude at time = timestampUnixMS. If lat is present, lon must be present or data should be thrown out. This may be the result of an interpolation or estimate.
+- `longitude`, the WGS84 longitude at time = timestampUnixMS. If lon is present, lat must be present or data should be thrown out. This may be the result of an interpolation or estimate.
+- `awa`, the apparent wind angle measured in degrees from the centerline of the vessel.
+- `awsKts`, the apparent wind speed measured in kts.
+- `awdMagnetic`, the apparent wind direction measured in magnetic degrees from magnetic north.
+- `cogMagnetic`, course over ground calculated.
+- `sogKts`, speed over ground calculated.
+- `setDriftKts`, set and drift calculated.
+- `distanceToNextLegNM`, the distance in nautical miles to the next leg.
+- `ellapsedTime`, how long the vessel has been racing.
+- `timestampUnixMS`, **REQUIRED**, the Unix epoch timestamp that the data was collected. 
+
+
+## TODO:
+VMG, CMG, VMC?
+Where does scraped data fit in to this?
