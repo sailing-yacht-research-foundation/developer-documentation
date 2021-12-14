@@ -6,7 +6,7 @@ module.exports = {
   title: 'SYRF Developer Guides and API Reference',
   tagline: 'Build the future of sailing sports.',
   url: 'https://sailing-yacht-research-foundation.github.io',
-  baseUrl: '/sailing-yacht-research-foundation.github.io/',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   plugins: [
