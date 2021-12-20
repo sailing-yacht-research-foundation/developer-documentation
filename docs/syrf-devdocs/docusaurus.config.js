@@ -51,22 +51,6 @@ module.exports = {
               label: 'Guides',
               to: '/docs/guides/intro',
             },
-            {
-              label: 'iOS',
-              to: '/docs/ios/intro',
-            },
-            {
-              label: 'Android',
-              to: '/docs/android/intro',
-            },
-            {
-              label: 'React Native',
-              to: '/docs/react-native/intro',
-            },
-            {
-              label: 'REST',
-              to: '/docs/rest/intro',
-            },
           ],
         },
         {

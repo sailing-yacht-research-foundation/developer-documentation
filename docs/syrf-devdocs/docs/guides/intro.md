@@ -1,9 +1,11 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 # Introduction
 <script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
+
+![Alt text](/img/SyrfDeveloperProgramLogo.png)
 
 ## Motivation
 
@@ -48,6 +50,10 @@ In general the SYRF Developer Platform supports four basic use cases for app dev
 
 2. Regatta management apps who want to use the LivePing app to add tracking to events planned on their platform.
 3. Anyone who wants to subscribe to real time race updates such as start line and boat positions.
+    - Starting devices,
+    - Tactical/navigation software,
+    - Custom players or scoring apps.
+
 4. Data scientists who want to pull data from finished races to analyze in other contexts.
 
 Note that these use cases are not mutually exclusive, so it's completely possible to combine these guides in new and creative ways.
@@ -92,6 +98,8 @@ Once you have your developer token and your optional bot account, you are now ab
 
 After you've built your integration using our development environment, we'll ask you to give us a demo and answer some questions about the integration before we give you access to the production instances.
 
+Make sure you prominently display the [SYRF Developer Program badge](https://drive.google.com/file/d/1PnPQNIpSXBoILrE15gJF-VD2AJpL0BST/view?usp=sharing) on your website.
+
 ## Understanding Anonymous vs Non Anonymous Authentication: 
 
 ### Authentication vs Authorization
@@ -106,9 +114,9 @@ the SYRF app needs to make sure that user A can't delete the tracks of user B. U
 Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0&t=654s) for more information on the difference between authentication and authorization.
 
 Your app will need to be authenticated by SYRF. In practice what this means is you will have a session token that proves you are who you say you are.
-We will go into more detail on this in future guides, but for now it's enough to know that we have two ways for your app to authenticate, and both ways give you a session token which is used to make further API requests. 
+We will go into more detail on this below, but for now it's enough to know that we have two ways for your app to authenticate, and both ways give you a session token which is used to make further API requests. 
 
-We allow for "anonymous" authentication as well as non-anonymous authentication.
+We allow for "anonymous" authentication as well as "non-anonymous" authentication.
 
 :::info
 The SYRF APIs provide two ways for software to authenticate and it's important to understand the differences.
@@ -128,11 +136,12 @@ Because we know who they are, non-anonymous users (and bots) are able to:
 * Pull data out of the system.
 
 :::caution Don't ask your users for their SYRF passwords.
-Apps that ask their end users for their SYRF passwords will be banned. You should use OAuth to get a SYRF user token if that is your goal.
+Apps that directly ask their end users for their SYRF passwords will be banned. You should use OAuth to get a SYRF user token if that is your goal.
 :::
 
 ### Anonymous Authentication
-"Anonymous" (sometimes called "lazy") authentication means that SYRF can't associate a user with any particular email, company or human being.
+"Anonymous" (sometimes called "lazy") authentication means that SYRF can't associate a user with any particular email, company or human being, but we can differentiate between two anonymous users. Anonymous authentication doesn't require a password but it does require a unique device Id.
+
 Imagine the scenario where you only want to search for races near a particular location. In that scenario, there shouldn't be 
 a need for someone to put in a username and password, since all events in the SYRF platform are publicly readable. 
 
@@ -161,20 +170,3 @@ Once an event is published, the event and races becomes publicly visible.
 
 #### Publicly visible does not mean:
 * Anyone can join or send their tracks into the race.
-
-## Support
-
-![Alt Text](https://media.giphy.com/media/3oKIPsU8OC7JhkvY8U/giphy.gif)
-
-We get it - reading documentation isn't as fun as writing code.
-We try our best to keep our docs up to date but inevitably things will slip through.
-
-When you're stuck on a problem, try these resources:
-
-* [GitHub](https://github.com/sailing-yacht-research-foundation)
-    * Find the appropriate repository and look at open and closed issues.
-    * Inspect the source code of our sample projects and open sourced repositories.
-* [Discord](https://discord.gg/EfvufEsDua)
-* [Stack Overflow](https://stackoverflow.com/questions/tagged/syrfio)
-    * Use the `#syrfio` tag.
-* [YouTube](https://www.youtube.com/channel/UC6Mskz_SpAi18XKleqhoxSg)

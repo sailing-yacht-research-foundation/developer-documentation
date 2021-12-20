@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 # Quick Start
@@ -9,7 +9,7 @@ sidebar_position: 2
 ## How Do I:
 
 ### Add SYRF OAuth to my app?
-This is currently not automated. If interested please join our Discord to get in touch.
+This is currently not automated. If interested please join our [Discord](https://discord.gg/EfvufEsDua) to get in touch.
 
 ### Search for races?
 See [our guide here.](/docs/guides/recipes/findcompetitionunits)
@@ -19,10 +19,10 @@ See [our guide here.](/docs/guides/recipes/findcompetitionunits)
 See [our guide here.](/docs/guides/recipes/usetrackingapp)
 
 ### Embed a playback iFrame?
-Add this snippet to your html:
+Add this snippet to your html or Webview:
 
 ```
-<iframe src='https://dev.syrf.io/playback?raceId=COMPETITION_UNIT_ID'>
+<iframe src='https://syrf.io/playback?raceId=COMPETITION_UNIT_ID'>
 ```
 
 ### Subscribe to live race data?
