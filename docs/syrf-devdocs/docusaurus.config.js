@@ -7,6 +7,8 @@ module.exports = {
   tagline: 'Build the future of sailing sports.',
   url: 'https://sailing-yacht-research-foundation.github.io',
   baseUrl: '/',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   plugins: [
     require.resolve('@cmfcmf/docusaurus-search-local')
   ],
