@@ -6,12 +6,12 @@ module.exports = {
   title: 'SYRF Developer Guides and API Reference',
   tagline: 'Build the future of sailing sports.',
   url: 'https://sailing-yacht-research-foundation.github.io',
-  baseUrl: '/sailing-yacht-research-foundation.github.io/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  baseUrl: '/',
   plugins: [
     require.resolve('@cmfcmf/docusaurus-search-local')
   ],
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'sailing-yacht-research-foundation', // Usually your GitHub org/user name.
   projectName: 'sailing-yacht-research-foundation.github.io', // Usually your repo name.
@@ -30,10 +30,6 @@ module.exports = {
           position: 'left',
           label: 'Guides',
         },
-        {type: 'doc', docId:'ios/intro', label:'iOS SDK', position:'left'},
-        {type: 'doc', docId:'android/intro', label:'Android SDK', position:'left'},
-        {type: 'doc', docId:'react-native/intro', label:'React Native SDK', position:'left'},
-        {type: 'doc', docId:'rest/intro', label:'Websockets & REST', position:'left'},
         {to: '/blog', label: 'Release Notes', position: 'left'},
         {to: '/showcase', label: 'Showcase', position: 'left'},
         {

@@ -181,7 +181,3 @@ Data that has to be calculated from other data or otherwise interpolated. Much o
 - `ellapsedTime`, how long the vessel has been racing.
 - `timestampUnixMS`, **REQUIRED**, the Unix epoch timestamp that the data was collected. 
 
-
-## TODO:
-VMG, CMG, VMC?
-Where does scraped data fit in to this?

@@ -1,40 +1,47 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Quick Start
 
 <script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
 
-## How Do I?
+## How Do I:
 
-### Add SYRF SSO to my app?
-TODO
+### Add SYRF OAuth to my app?
+This is currently not automated. If interested please join our Discord to get in touch.
 
-### Use SYRF tracking app for tracking if I have an existing race planning app?
+### Search for races?
+See [our guide here.](/docs/guides/recipes/findcompetitionunits)
 
-See [our recipe here.](/docs/guides/recipes/usetrackingapp)
+### Add tracking to an existing regatta management platform?
+
+See [our guide here.](/docs/guides/recipes/usetrackingapp)
 
 ### Embed a playback iFrame?
 Add this snippet to your html:
 
 ```
-<iframe src='https://playback.syrf.io/?token=YOUR_DEVELOPER_TOKEN&race=RACE_ID'>
+<iframe src='https://dev.syrf.io/playback?raceId=COMPETITION_UNIT_ID'>
 ```
-:::tip Reminder
 
-Don't forget to replace your token and the race ID.
+### Subscribe to live race data?
+See [our guide here.](/docs/guides/recipes/realtimeupdates)
 
-:::
-
-### Subscribe to race data?
-
+### Pull data from a finished race?
 TODO
 
-### Create a custom tracking app?
 
-TODO
+### Do some data science on sailing tracks?
+The best source for sample code to analyze track data is SYRF's [python Jupyter Lab notebooks.](https://github.com/sailing-yacht-research-foundation/ai-sailing-agent/tree/main/notebooks)
 
-### Pull data from an expired race?
+These notebooks provide sample code to:
 
-TODO
+* Calculate polar splines in parallel. 
+* Reverse-solve a polar, or polar segment based on a grib source and track source.
+* Route sailboats using a parallel accelerated isochrone method.
+* Visualize weather data.
+* Animate sailboat tracks color coded by different values such as TWA, COG and SOG.
+* Visualize the "flow" of races, which show different key decision points. 
+
+![Alt Text](/img/flows.png)

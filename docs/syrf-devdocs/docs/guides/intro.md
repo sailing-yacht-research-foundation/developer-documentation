@@ -3,8 +3,26 @@ sidebar_position: 1
 ---
 
 # Introduction
-
 <script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
+
+## Motivation
+
+The SYRF platform is revolutionizing sailing sports. 
+
+** A few of the features of the SYRF platform are:**
+* The LivePing app, that enables sailors to stop the ping parade by crowd sourcing and subscribing to startline updates.
+* Global synchronized time that keeps all apps in sync to within tens of milliseconds.
+* SYRF.io, the home of sailing on the internet.
+* The largest data set of sailing certificates and polars from the biggest certificate organizations.
+* The largest data set of raw sailing tracks that exists on Earth, period.
+    * 1 TB of positions, tens of thousands of boats, 100k races spanning 20 years and everything from round-the-world races to countless inshore regattas.
+    * 4 TB of weather data, pre sliced by time and space for each race, including wind, pressure, and sea state variables - incuding those from "reanalysis" (what we know happened in the past, not a prediction of the future).
+* A real time pub/sub system to ingest, analyze and relay race data from and to arbitrary sources.
+    * Auto-umpiring: our system automatically handles OCS and other spatially related events and eliminates the need for protests and the ping parade.
+* Global nautical charts, pre-tiled for web and mobile mapping libraries, available for each layer in common vector tile format.
+* Developer friendly APIs to find, send, pull, subscribe to, and otherwise interact with everything mentioned above.
+* Sample code to get you started.
+ 
 
 ## Purpose and Audience
 
@@ -18,98 +36,145 @@ SYRF's mission is to advance sailing sports (sailing, kite boarding/foiling/surf
 We've spent a long time building client facing applications to help the average sailor, as well as partnering with numerous startups to get our tech
 into as many hands as possible. This guide is explicitly for software engineers who want to build new applications on top of our platform. 
 
-This site has the following sections:
-
-* Guides: High level overview of important concepts. Language and platform independent concepts that apply accross stacks.
-* Client SDK Guides: Getting started guides for Android, iOS and Web apps. Specific implementation tips and API reference docs are here.
-* Release Notes: The release notes for all versions. 
-
-
 ## Use Cases
 
-In general the SYRF Developer Platform supports six basic use cases for all wind-water sports:
+In general the SYRF Developer Platform supports four basic use cases for app developers:
 
-* Use the existing SYRF tracking app to add tracking to a race or regatta management platform.
-* Create a custom mobile tracking app that sends data from the phone or boat instruments.
-* Build sophisticated viewing or playback apps for numerous use cases.
-* Pull all race data for races which are over and do whatever you want with it.
-* Display nautical charts in mobile and web apps.
-* Let your users use Single Sign On with OIDC to help your end users organize and share their data.
+1. Apps that want to use SYRF accounts for Single Sign On/OIDC. There are several reasons you may want to do this:
+    - For an out of the box authentication solution, 
+    - To provide SYRF user information in a regatta manager integration (see next bullet),
+    - To import SYRF user data (tracks for example) into your application. 
+    - Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0&t=654s) for a great introduction to the problem OIDC solves.
 
-## Platform Capabilities
+2. Regatta management apps who want to use the LivePing app to add tracking to events planned on their platform.
+3. Anyone who wants to subscribe to real time race updates such as start line and boat positions.
+4. Data scientists who want to pull data from finished races to analyze in other contexts.
 
-The SYRF platform allows developers to build apps with the following capabilities:
-
-### Single Sign On
-
-* Let your users sign in with their SYRF account via Open ID Connect so they can store their tracks and metadata.
-
-### Sophisticated real-time tracking, course umpiring, time corrections and analytics
-
-* Real time handicap and non-handicap scoring:
-    * PCS, TOT, and TOD corrected times in real time.
-    * Remove the influence of current.
-* Real time course calculations:
-    * OCS, rounding, and arbitrary course interaction event detection.
-    * Countless real time metrics (TWA, TWS, TWD, COG, SOG, etc.)
-    * Layline, ladderline, and distance calculations.
-
-![Alt Text](/img/line-interaction.gif)
-
-### Privacy conscious
-
-* We ignore data outside of a bounding box surrounding the race.
-* We scrub user identifiers in the output requests to prevent tracking users accross events.
-* Compliant with GDPR and other privacy laws.
-
-### Not just weather, meteorology
-
-* Our partners are doing real science to provide data that isn't available elsewhere.
-* We combine models with observations to use only the most accurate forecasts.
-* We use real-time remote sensing data from satellites to obtain the most accurate state of the earth possible.
-
-### Unopinionated
-
-* Built exclusively for sports that combine wind and water but flexible for all types and methodologies.
-* We kept our APIs as generic as possible so it doesn't matter if you're running handicap coastal races or kite boarding with friends.
-* We support all the classical ways of running races as well as new and creative approaches.
-* We default to "open". 
-* Use our calculated corrected times or use our protest API to manually change the results of races.
-
-### Powerful media streaming features
-
-* The most sophisticated race playback viewer on the market plus the APIs to build your own.
-* Real time motion graphics tools for OBS to empower your community to live stream events in a way that was never possible before.
-
-### More data than anywhere else
-
-* Our platform hosts 20 years of races from around the world. You can pull this data and use it however you'd like.
-    * We have billions of race positions for almost 100,000 races.
-    * Over 1TB of data with more added every day.
+Note that these use cases are not mutually exclusive, so it's completely possible to combine these guides in new and creative ways.
 
 ![Alt Text](/img/breathing.gif)
 
-### Syncronized devices
+## Introduction
 
-* Did you know that a phone clock can vary +/- 30 seconds over a 24 hour period? That means two phones clocks can be as much as a minute apart. 
-* For mobile apps that use the time module, all devices will be syncronized using NTP to within a few ms of each other. 
+:::caution
+It's extremely important to understand this section.
+:::
 
-### Zero latency calculations
+### Step 1 - Get a developer token:
 
-* If your app is using our platform to track physical course marks, many distance calculations will happen on-device, meaning there will be zero latency for displaying distances around race starts.
+The first step is to obtain a developer token by filling out our [Developer Program Form](https://docs.google.com/forms/d/e/1FAIpQLSfXTgxpeqaJ3sCNY4RV_iF7Ex9wbcv3rVjfV4xhCqypvm95Pw/viewform?usp=sf_link). Unfortunately, we have to generate
+new tokens manually at this stage and this form allows us to collect what we need from you to generate the token, 
+and share the appropriate GitHub samples with your team. 
 
-### Intelligent frequency scaling
+### Step 2 - (Optionally) Create a bot user:
 
-* We increase the ping time as competitors get close to key events or locations and decrease it when we don't need it. This preserves battery but maintains accuracy. 
+:::info
+This step is only required if you need to insert data into the SYRF platform, or handle any kind of authorization.
+Regatta manager integrations will need to do this, but use cases #1, #3, and #4 listed above can skip this step.
+:::
 
-### Better nautical charts
+For any use case that involves sending event or participant metadata to SYRF, you'll also want to start by creating a dummy "bot" user. 
+This user will be the user that interacts with SYRF on behalf of your application, as though it were a real user.
 
-* Traditional nautical charts don't make sense in the 21st century.
-* Our chart tile servers allow you to isolate any ENC layer and style it however you'd like using standard web mapping frameworks.
 
-## Critical Concepts
+![Alt Text](/img/bot-user.png)
 
-* Your end users will be required to have SYRF accounts in order to use the APIs.
-* You will need a developer token from developers.syrf.io
-* All races with more than 4 participants will be public. User data for public races will be sanitized to protect their privacy.
-* We currently only have client SDKs in Kotlin, Swift and React Native but everything that can be accomplished with the client SDKs can be accomplished with Websockets and REST endpoints.
+#### Bot User Best Practices:
+* Name your bot user the same as your company or organization.
+* Use a secure password generated by a password manager.
+* Upload your app, company or organization logo as the user image for the bot user.
+
+### Step 3 - Use our APIs to make something awesome:
+
+Once you have your developer token and your optional bot account, you are now able to make API calls to send and recieve data.
+
+### Step 4 - Get in touch with us to enable production access:
+
+After you've built your integration using our development environment, we'll ask you to give us a demo and answer some questions about the integration before we give you access to the production instances.
+
+## Understanding Anonymous vs Non Anonymous Authentication: 
+
+### Authentication vs Authorization
+Let us quickly define two important concepts in software engineering, "authentication" and "authorization". 
+"Authentication" means SYRF is able to verify that the user is who they say they are. This is usually accomplished via
+username/password authentication. The idea is that only the valid user knows the password (wishful thinking!). By providing the
+correct password, the user is now "authenticated" - the system knows who they are.
+
+"Authorization", on the other hand is the problem of determining if a user is authorized to do something. For instance,
+the SYRF app needs to make sure that user A can't delete the tracks of user B. User A and User B may both be authenticated, but they only have authorization to edit their own respective data.
+
+Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0&t=654s) for more information on the difference between authentication and authorization.
+
+Your app will need to be authenticated by SYRF. In practice what this means is you will have a session token that proves you are who you say you are.
+We will go into more detail on this in future guides, but for now it's enough to know that we have two ways for your app to authenticate, and both ways give you a session token which is used to make further API requests. 
+
+We allow for "anonymous" authentication as well as non-anonymous authentication.
+
+:::info
+The SYRF APIs provide two ways for software to authenticate and it's important to understand the differences.
+:::
+
+
+### Non-Anonymous Authentication
+Let's look at the easy case first: non-anonymous authentication. This happens when someone who has an existing SYRF account
+uses their email and password to log in to the platform. In the above steps, when you created your bot user, you did so so that your
+app can use non-anonymous authentication with our APIs. Non-anonymous authentication allows SYRF to
+determine the "who" behind the requests. Non-anonymous authentication is required to solve the problem of authorization. 
+
+Once an app or user is authenticated with non-anonymous authentication, they can use their session token to make a variety of requests.
+Because we know who they are, non-anonymous users (and bots) are able to:
+
+* Put data into the system, since we can associate it with a permanent account and use that account for authorization.
+* Pull data out of the system.
+
+:::caution Don't ask your users for their SYRF passwords.
+Apps that ask their end users for their SYRF passwords will be banned. You should use OAuth to get a SYRF user token if that is your goal.
+:::
+
+### Anonymous Authentication
+"Anonymous" (sometimes called "lazy") authentication means that SYRF can't associate a user with any particular email, company or human being.
+Imagine the scenario where you only want to search for races near a particular location. In that scenario, there shouldn't be 
+a need for someone to put in a username and password, since all events in the SYRF platform are publicly readable. 
+
+For this reason, we've enabled anonymous authentication for use cases that only need to read data out of SYRF. 
+
+## Using the API
+Most use cases will use the API using the same flow.
+1. Use your developer token to obtain a session token, using either anonymous authentication or, if you have a bot user, non-anonymous authentication.
+2. Use your session token with our APIs and Websockets.
+3. That's basically it.
+
+## Important Privacy Considerations
+
+Positions sent from the LivePing app are publicly visible IF and ONLY IF they are associated with an event. 
+
+* If as a user you hit "Track Now" and never make hit the "make public" button, your track will stay private, and only your user will be able to read it.
+* If you join an existing event or race from the map view or the event list page, your track will be publicly visible and all user types will be able to read it.
+
+Once an event is published, the event and races becomes publicly visible. 
+
+#### Publicly visible means everyone on the internet can:
+
+* Watch the race player.
+* View which boats and sailors participated in the event and races.
+* View all metadata associated with the event and races, including who organized it.
+
+#### Publicly visible does not mean:
+* Anyone can join or send their tracks into the race.
+
+## Support
+
+![Alt Text](https://media.giphy.com/media/3oKIPsU8OC7JhkvY8U/giphy.gif)
+
+We get it - reading documentation isn't as fun as writing code.
+We try our best to keep our docs up to date but inevitably things will slip through.
+
+When you're stuck on a problem, try these resources:
+
+* [GitHub](https://github.com/sailing-yacht-research-foundation)
+    * Find the appropriate repository and look at open and closed issues.
+    * Inspect the source code of our sample projects and open sourced repositories.
+* [Discord](https://discord.gg/EfvufEsDua)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/syrfio)
+    * Use the `#syrfio` tag.
+* [YouTube](https://www.youtube.com/channel/UC6Mskz_SpAi18XKleqhoxSg)

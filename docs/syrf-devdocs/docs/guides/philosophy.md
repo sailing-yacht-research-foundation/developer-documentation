@@ -31,7 +31,7 @@ as a service provider and your responsiblity as a developer.
 ## Leave decisions up to developers and their users. SYRF is unopinonated.
 
 The SYRF APIs are not intended to be used by the average sailor/kite/wing/foiler/boarder. Rather, the APIs should be used by software companies who understand their markets.
-As such, SYRF does not determine how trophys should be calculated for instance, or who should be ranked together in a leaderboard. Neither do the APIs use existing terminology wherever possible.
+As such, SYRF does not determine how trophies should be calculated for instance, or who should be ranked together in a leaderboard. Neither do the APIs use existing terminology wherever possible.
 The SYRF API does not have a concept for things like "class", "division", "race" or "regatta". 
 Rather, the SYRF APIs use specific data model objects with precisely defined meanings, such as a `BoatParticipantGroup`. Developers can create and subscribe to any combination of these models in order to make their products useful to their end users or customers.
 
@@ -53,3 +53,4 @@ Given the wide variety of cultures, sports, and needs, we focus on improving tra
 
 We want to make the data and capabilities of the most well-funded and advanced campaigns available to everyone. This is only possible by "defaulting to open". 
 An open ecosystem benefits sponsors, competitors, startups, organizations, and fans, and ensures a bright future for sailing sports.
+The closed and segmented ecosystem of sailing data generators and stakeholders is holding the sport back.
