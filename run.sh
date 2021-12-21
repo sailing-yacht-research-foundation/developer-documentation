@@ -8,12 +8,9 @@ chmod -R 777 /home/ubuntu/
 
 cd /home/ubuntu/developer-documentation/docs/syrf-devdocs/
 
-#pull the latest changes
-git pull
 
 # run docker command to build the application
 docker build -t developer .
-
 
 # stop existing container
 docker stop dev

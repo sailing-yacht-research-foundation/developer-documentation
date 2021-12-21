@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
  - source: .
-   destination: /home/ubuntu/
+   destination: /home/ubuntu/developer-documentation/
    file_exists_behavior: OVERWRITE
 
 permissions:
