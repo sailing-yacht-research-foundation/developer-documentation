@@ -80,7 +80,7 @@ module.exports = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Sailing Yacht Research Foundation.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href='https://www.sailyachtresearch.org'>Sailing Yacht Research Foundation.</a>`,
     },
     announcementBar: {
       id: 'announcementBar-1', // Increment on change

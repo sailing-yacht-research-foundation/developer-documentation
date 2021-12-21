@@ -47,7 +47,7 @@ In general the SYRF Developer Platform supports four basic use cases for app dev
     - For an out of the box authentication solution, 
     - To provide SYRF user information in a regatta manager integration (see next bullet),
     - To import SYRF user data (tracks for example) into your application. 
-    - Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0&t=654s) for a great introduction to the problem OIDC solves.
+    - Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0) for a great introduction to the problem OIDC solves.
 
 2. Regatta management apps who want to use the LivePing app to add tracking to events planned on their platform.
 3. Anyone who wants to subscribe to real time race updates such as start line and boat positions.
@@ -112,7 +112,7 @@ correct password, the user is now "authenticated" - the system knows who they ar
 "Authorization", on the other hand is the problem of determining if a user is authorized to do something. For instance,
 the SYRF app needs to make sure that user A can't delete the tracks of user B. User A and User B may both be authenticated, but they only have authorization to edit their own respective data.
 
-Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0&t=654s) for more information on the difference between authentication and authorization.
+Watch [this awesome video](https://www.youtube.com/watch?v=996OiexHze0) for more information on the difference between authentication and authorization.
 
 Your app will need to be authenticated by SYRF. In practice what this means is you will have a session token that proves you are who you say you are.
 We will go into more detail on this below, but for now it's enough to know that we have two ways for your app to authenticate, and both ways give you a session token which is used to make further API requests. 
@@ -158,8 +158,8 @@ Most use cases will use the API using the same flow.
 
 Positions sent from the LivePing app are publicly visible IF and ONLY IF they are associated with an event. 
 
-* If as a user you hit "Track Now" and never make hit the "make public" button, your track will stay private, and only your user will be able to read it.
-* If you join an existing event or race from the map view or the event list page, your track will be publicly visible and all user types will be able to read it.
+* If as a LivePing user you hit "Start Tracking" and never make hit the "make public" button, your track will stay private, and only your user will be able to read it.
+* If you join an existing event or race from the map view or the event list page, or you make your event public, your track will be publicly visible and all user types will be able to read it.
 
 Once an event is published, the event and races becomes publicly visible. 
 

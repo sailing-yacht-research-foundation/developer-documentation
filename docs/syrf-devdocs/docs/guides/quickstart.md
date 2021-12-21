@@ -45,3 +45,9 @@ These notebooks provide sample code to:
 * Visualize the "flow" of races, which show different key decision points. 
 
 ![Alt Text](/img/flows.png)
+
+Here are two other great resources:
+
+[Sustainability-GIS](https://sustainability-gis.readthedocs.io)
+
+[Automating GIS Processes](https://automating-gis-processes.github.io)
