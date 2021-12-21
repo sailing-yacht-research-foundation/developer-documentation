@@ -20,7 +20,7 @@ Again we must authenticate. We can use anonymous authentication for this use cas
 Anonymous login requires a unique device Id for every session. We recommend doing this from the back end, but if you want to use a client app for
 these requests please ensure you are providing a unique device Id such as a hardware identifier. 
 
-Make a POST to `/auth/anonymous-login` with a body containing:
+Make a POST to `https://liveserver-dev.syrf.io/v1/auth/anonymous-login` with a body containing:
 ```
 { 
     "id":DEVICE-ID
@@ -38,7 +38,7 @@ Provide this session token as “token” bearer in the header of future request
 ## Step 2) Open a Websocket
 Now that you have your session token, open a Websocket connection and tell us what data you'd like to subscribe to.
 
-Open websocket on `ws://host/authenticate?session_token=' + session_token`
+Open websocket on `wss://streaming-server.syrf.io/authenticate?session_token=' + myToken`
 
 Send us the `CompetitionUnit` Id that you'd like to listen to:
 
@@ -51,8 +51,37 @@ ws.send({
 });
 ```
 
-Receive position updates via the websocket.
-Here is an example position update from a boat:
+** You can also subscribe to just a single VesselParticipant:**
+
+```
+ws.send({
+  action: 'subscribe',
+  data: {
+    vesselParticipantId: 'VESSEL-PARTICIPANT-ID',
+  },
+});
+```
+
+If the subscription command was successful you will recieve the following:
+
+```
+{
+  "type": "command",
+  "action": "subscribe",
+  "success": true,
+  "data": {
+    "vesselParticipantId": "BLAH",
+    "competitionUnitId": "BLAH"
+  }
+}
+```
+
+
+## Step 3) Listen for updates
+Updates will be sent through the Websocket connection.
+There are different types of updates which can be differentiated by looking at the `dataType` field.
+
+### Position updates
 
 ```
 {
@@ -79,7 +108,28 @@ Here is an example position update from a boat:
 }
 ```
 
-Here is an example position update from the start line:
+### Event updates
+
+```
+{
+  "type": "data",
+  "dataType": "event",
+  "data": {
+    "vesselParticipantId": "3c7b6ce9-e9c7-4bb6-b938-81e84f39e43a",
+    "markId": "d58559f9-a5c9-452b-a0d3-3154ff8cbc92",
+    "eventType": "VesselLineOutsideCrossing",
+    "coordinates": ["-159.6410", "-9.8605"],
+    "time": 1629389767002,
+    "raceData": {
+      "competitionUnitId": "babc1dc0-977d-48ff-92a9-e023c3894f3d",
+      "vesselParticipantId": "3c7b6ce9-e9c7-4bb6-b938-81e84f39e43a"
+    }
+  }
+}
+```
+
+### Mark track updates
+Listen for mark-track updates to keep up on changes to the start line.
 
 ```
 {
@@ -101,3 +151,6 @@ Here is an example position update from the start line:
 ```
 
 
+:::info
+Nothing stops you from subscribing to more than one `CompetitionUnit` or `VesselParticipant` at a time.
+:::

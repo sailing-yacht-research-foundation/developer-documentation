@@ -45,7 +45,7 @@ While these examples use anonymous authentication, everything works the same way
 Anonymous login requires a unique device Id for every session. We recommend doing this from the back end, but if you want to use a client app for
 these requests please ensure you are providing a unique device Id such as a hardware identifier. 
 
-Make a POST to `/auth/anonymous-login` with a body containing:
+Make a POST to `https://liveserver-dev.syrf.io/v1/auth/anonymous-login` with a body containing:
 ```
 { 
     "id":DEVICE-ID
@@ -129,7 +129,7 @@ The following fields are searchable:
 Once you have your session token, be sure to provide it as the bearer in every additional request. 
 To search for one field, you can include that field query in the body of a POST request.
 
-Make a POST to `/competition-units/search`. 
+Make a POST to `https://liveserver-dev.syrf.io/v1/competition-units/search`. 
 In the body of your request, include this example:
 
 ```
@@ -157,7 +157,7 @@ You can do so by replacing your "query" string with something like this:
 You can make one field "weigh" more than another by using points. 
 For instance, if you want the name match to count more than the country name match you can use a query like this:
 
-`"query":"(name:(Newport Bermuda 2015)^3 AND (start_country:(United States))^2"`
+`"query":"(name:(Newport Bermuda 2015))^3 AND (start_country:(United States))^2"`
 
 #### Search results
 Regardles of how you search, you will obtain a JSON list of `CompetitionUnit`s matching your query. 
@@ -221,10 +221,10 @@ Notice that event may or may not be null.
 
 ### Find CompetitionUnits near a specific location
 
-To find live `CompetitionUnit`s near a specific location make a `GET` request to `/open-competitions?lon=blah?lat=blah&radius=blah`
+To find live `CompetitionUnit`s near a specific location make a `GET` request to `https://liveserver-dev.syrf.io/v1/open-competitions?lon=blah?lat=blah&radius=blah`
 
 Ex:
-`/open-competitions?lon=-122.6348876953125&lat=37.73162487017297&radius=1`
+`https://liveserver-dev.syrf.io/v1/open-competitions?lon=-122.6348876953125&lat=37.73162487017297&radius=1`
 
 The `radius` parameter is in nautical miles.
 
