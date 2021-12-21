@@ -5,6 +5,7 @@ sidebar_position: 2
 # Introduction
 <script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
 
+
 ![Alt text](/img/SyrfDeveloperProgramLogo.png)
 
 ## Motivation
@@ -98,7 +99,7 @@ Once you have your developer token and your optional bot account, you are now ab
 
 After you've built your integration using our development environment, we'll ask you to give us a demo and answer some questions about the integration before we give you access to the production instances.
 
-Make sure you prominently display the [SYRF Developer Program badge](https://drive.google.com/file/d/1PnPQNIpSXBoILrE15gJF-VD2AJpL0BST/view?usp=sharing) on your website.
+Make sure you prominently display the [SYRF Developer Program badge](https://drive.google.com/drive/folders/1D5FLYs9hxnkH1P-xf8dxHB6FrYJ8cQPP?usp=sharing) on your website.
 
 ## Understanding Anonymous vs Non Anonymous Authentication: 
 
