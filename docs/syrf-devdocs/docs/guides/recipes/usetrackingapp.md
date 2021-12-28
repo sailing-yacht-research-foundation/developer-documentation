@@ -4,8 +4,6 @@ sidebar_position: 7
 
 # Build a full regatta manager integration
 
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 Companies that have existing race and regatta management platforms can use our APIs to configure the LivePing mobile tracking app to track races that have been planned in their systems.
 
 ## Prerequisites

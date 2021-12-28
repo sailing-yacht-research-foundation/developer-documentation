@@ -4,8 +4,6 @@ sidebar_position: 7
 
 # Lifecycle and Statuses
 
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 Let's look at how most apps will use the platform before, during and after a race.
 
 ## Overview

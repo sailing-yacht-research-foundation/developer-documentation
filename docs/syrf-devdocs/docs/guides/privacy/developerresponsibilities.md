@@ -4,8 +4,6 @@ sidebar_position: 1
 
 # Developer Responsibilities
 
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 Apps that store a user's location in a database must be built by people who take this responsiblity seriously.
 
 
