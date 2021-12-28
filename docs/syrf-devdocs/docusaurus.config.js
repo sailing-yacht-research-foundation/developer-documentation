@@ -12,6 +12,7 @@ module.exports = {
   plugins: [
     require.resolve('@cmfcmf/docusaurus-search-local')
   ],
+  scripts:['https://developers.syrf.io/umami.js', {src:'https://analytics.syrf.io/umami.js', async: true, 'data-website-id':'d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4'}],
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
