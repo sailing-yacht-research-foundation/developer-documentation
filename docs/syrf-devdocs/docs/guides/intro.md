@@ -8,7 +8,7 @@ sidebar_position: 2
 
 ## Motivation
 
-The SYRF platform is revolutionizing sailing sports. 
+The SYRF platform is revolutionizing sailing sports.. 
 
 ** A few of the features of the SYRF platform are:** 1
 * The LivePing app, that enables sailors to stop the ping parade by crowd sourcing and subscribing to startline updates.
