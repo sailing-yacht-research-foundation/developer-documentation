@@ -4,8 +4,6 @@ sidebar_position: 10
 
 # Common Race Configurations
 
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 Here we describe high level instructions for handling common race configurations and problems.
 
 ## Pursuit starts

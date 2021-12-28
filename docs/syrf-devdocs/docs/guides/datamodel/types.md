@@ -4,8 +4,6 @@ sidebar_position: 1
 
 # Types
 
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 This page describes high level types which are used across our client SDKs, REST and Websocket APIs.
 Think of this page more of a dictionary than an API reference. The names, vocabulary and business logic will be similar across platforms but the specific
 code that uses them will be different.

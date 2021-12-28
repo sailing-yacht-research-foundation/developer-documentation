@@ -4,8 +4,6 @@ sidebar_position: 5
 
 # Find CompetitionUnits
 
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 ## Introduction
 The `CompetitionUnit` is arguably the most important record type in the SYRF platform. 
 The `CompetitionUnit` represents the metadata for a group of vessels on the water at the same time who will be scored or ranked against each other.

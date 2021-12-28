@@ -3,16 +3,14 @@ sidebar_position: 2
 ---
 
 # Introduction
-<script async defer data-website-id="d9c6bc6c-4456-4d65-ac9a-cd8a579d76e4" src="https://analytics.syrf.io/umami.js"></script>
-
 
 ![Alt text](/img/SyrfDeveloperProgramLogo.png)
 
 ## Motivation
 
-The SYRF platform is revolutionizing sailing sports. 
+The SYRF platform is revolutionizing sailing sports.. 
 
-** A few of the features of the SYRF platform are:**
+** A few of the features of the SYRF platform are:** 1
 * The LivePing app, that enables sailors to stop the ping parade by crowd sourcing and subscribing to startline updates.
 * Global synchronized time that keeps all apps in sync to within tens of milliseconds.
 * SYRF.io, the home of sailing on the internet.
