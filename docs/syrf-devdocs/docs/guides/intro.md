@@ -67,7 +67,7 @@ It's extremely important to understand this section.
 
 ### Step 1 - Get a developer token:
 
-The first step is to obtain a developer token by filling out our [Developer Program Form](https://docs.google.com/forms/d/1MOaKald3MuVLSJQazAfAjqUelrEaLuxyVTNchwg6VOE/edit?usp=sharing). Unfortunately, we have to generate
+The first step is to obtain a developer token by filling out our [Developer Program Form](https://docs.google.com/forms/d/e/1FAIpQLSfXTgxpeqaJ3sCNY4RV_iF7Ex9wbcv3rVjfV4xhCqypvm95Pw/viewform?usp=sf_link). Unfortunately, we have to generate
 new tokens manually at this stage and this form allows us to collect what we need from you to generate the token, 
 and share the appropriate GitHub samples with your team. 
 
