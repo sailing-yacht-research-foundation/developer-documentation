@@ -8,12 +8,15 @@ sidebar_position: 3
 
 ### Add SYRF OAuth to my app?
 This is currently not automated. If interested please join our [Discord](https://discord.gg/EfvufEsDua) to get in touch.
+See [our guide here.](/docs/guides/recipes/oauth)
 
 ### Search for races?
 See [our guide here.](/docs/guides/recipes/findcompetitionunits)
 
-### Add tracking to an existing regatta management platform?
+### Get basic event, course, and race info?
+See [our guide here.](/docs/guides/recipes/getinfo)
 
+### Add tracking to an existing regatta management platform?
 See [our guide here.](/docs/guides/recipes/usetrackingapp)
 
 ### Embed a playback iFrame?
@@ -23,12 +26,20 @@ Add this snippet to your html or Webview:
 <iframe src='https://syrf.io/playback?raceId=COMPETITION_UNIT_ID'>
 ```
 
-### Subscribe to live race data?
+### Subscribe to live race data, including boat/mark position updates and start time updates?
 See [our guide here.](/docs/guides/recipes/realtimeupdates)
 
 ### Pull data from a finished race?
-TODO
 
+
+### Request user data or implement single sign on via OAuth?
+See [our guide here.](/docs/guides/recipes/oauth/oauth)
+
+### Send in position streams for marks?
+See [our guide here.](/docs/guides/recipes/sendmarkupdates)
+
+### Search for certificates?
+See [our guide here.](/docs/guides/recipes/findcertificates)
 
 ### Do some data science on sailing tracks?
 The best source for sample code to analyze track data is SYRF's [python Jupyter Lab notebooks.](https://github.com/sailing-yacht-research-foundation/ai-sailing-agent/tree/main/notebooks)

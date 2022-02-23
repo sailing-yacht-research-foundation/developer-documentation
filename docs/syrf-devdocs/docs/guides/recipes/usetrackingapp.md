@@ -1,8 +1,8 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 ---
 
-# Build a full regatta manager integration
+# Build a Full Regatta Manager Integration
 
 Companies that have existing race and regatta management platforms can use our APIs to configure the LivePing mobile tracking app to track races that have been planned in their systems.
 
