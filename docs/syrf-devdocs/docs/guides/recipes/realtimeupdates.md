@@ -1,8 +1,11 @@
 ---
-sidebar_position: 6
+sidebar_position: 4
 ---
 
-# Subscribe to real time updates
+# Subscribe to Real Time Updates
+
+## Prerequisites
+It may be helpful to view our guide on getting info.
 
 
 ## Introduction
@@ -11,6 +14,12 @@ Once you've found the `CompetitionUnit` of interest, you may want to subscribe t
 occurs live. 
 
 This is accomplished using our Websockets endpoints. 
+
+The most up to date and comprehensive docs for this use case are in GitHub.
+Please complete the [Developer Program Form](https://docs.google.com/forms/d/e/1FAIpQLSfXTgxpeqaJ3sCNY4RV_iF7Ex9wbcv3rVjfV4xhCqypvm95Pw/viewform?usp=sf_link)
+to be added to our repositories. 
+
+Once you have been added to the org, you can view the documentation [here](https://github.com/sailing-yacht-research-foundation/streaming-server).
 
 ## Step 1) Authenticate
 Again we must authenticate. We can use anonymous authentication for this use case, but you could also use your bot user.

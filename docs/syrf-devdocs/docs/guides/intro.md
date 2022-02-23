@@ -10,7 +10,7 @@ sidebar_position: 2
 
 The SYRF platform is revolutionizing sailing sports.. 
 
-** A few of the features of the SYRF platform are:** 1
+** A few of the features of the SYRF platform are:** 
 * The LivePing app, that enables sailors to stop the ping parade by crowd sourcing and subscribing to startline updates.
 * Global synchronized time that keeps all apps in sync to within tens of milliseconds.
 * SYRF.io, the home of sailing on the internet.
@@ -169,3 +169,42 @@ Once an event is published, the event and races becomes publicly visible.
 
 #### Publicly visible does not mean:
 * Anyone can join or send their tracks into the race.
+
+
+## REST Requests
+Most of the endpoints are RESTful HTTP endpoints. 
+Here is a sample HTTP request in Curl. There are numerous tools and libraries to make said requests, but the basics are the same.
+
+```
+
+curl 'https://liveserver-dev.syrf.io/v1/certificates/search' \
+  -H 'accept: application/json, text/plain, */*' \
+  -H 'content-type: application/json' \
+  -H 'authorization: Bearer YOUR-SESSION-TOKEN' \
+  -H 'accept-language: en-US,en;q=0.9' \
+  --data-raw '{"query":{"bool":{"must":[{"query_string":{"query":"organization:(ORC)"}}]}}}' \
+  --compressed >> certs_results.json
+
+```
+
+Enter this command on your *nix-based terminal with curl installed. 
+
+What does this request do?
+
+* Uses the command line utility curl to make a POST request to the endpoint `/v1/certificates/search`,
+* Sets the session token as the bearer header,
+* Set's the body of the POST to a query (described elsewhere),
+* Tells the listening server to compress the result (optional),
+* Saves the output of the request to a json file. 
+
+Every programming language in use in the last 30 years will have a library to simplify this for you.
+
+### Pagination
+
+Pagination is when you only want the first `n` results. This is helpful
+when there is a ton of data. 
+
+To use pagination, just append the endpoint with `?page=1&size=50`.
+
+For instance `/v1/certificates/search?page=1&size=50`, where page=1 means you want the first page and size=50
+means you want 50 results per page (so you're asking for the first 50 results).
