@@ -5,7 +5,7 @@ author: Jon Weisbaum
 author_title: SYRF Technical Director
 author_url: https://github.com/jweisbaum
 author_image_url: https://avatars.githubusercontent.com/u/2358174?v=4
-tags: [marksetbot,sdp]
+tags: [northsails,sdp]
 ---
 
 North Sails has generously donated $100,000 in support of SYRF and SYRF technical platform.
