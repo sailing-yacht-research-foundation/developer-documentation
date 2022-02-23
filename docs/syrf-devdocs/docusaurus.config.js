@@ -33,7 +33,7 @@ module.exports = {
           position: 'left',
           label: 'Guides',
         },
-        {to: '/blog', label: 'Release Notes', position: 'left'},
+        {to: '/blog', label: 'Updates', position: 'left'},
         {to: '/showcase', label: 'Showcase', position: 'left'},
         {
           href: 'https://github.com/sailing-yacht-research-foundation',
