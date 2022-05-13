@@ -24,13 +24,14 @@ Once you have been added to the org, you can view the documentation [here](https
 ## Step 1) Authenticate
 Again we must authenticate. We can use anonymous authentication for this use case, but you could also use your bot user.
 
-Anonymous login requires a unique device Id for every session. We recommend doing this from the back end, but if you want to use a client app for
-these requests please ensure you are providing a unique device Id such as a hardware identifier. 
+
+Anonymous login requires a unique device UUID for every session. We recommend doing this from the back end, but if you want to use a client app for
+these requests please ensure you are providing a unique device Id, and that it is a UUID. 
 
 Make a POST to `https://liveserver-dev.syrf.io/v1/auth/anonymous-login` with a body containing:
 ```
 { 
-    "id":DEVICE-ID
+    "id":DEVICE-UUID
     “devToken”: YOUR-DEVELOPER-API-KEY
 }
 ```

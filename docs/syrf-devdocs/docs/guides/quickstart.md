@@ -25,9 +25,12 @@ Add this snippet to your html or Webview:
 ```
 <iframe src='https://syrf.io/playback?raceId=COMPETITION_UNIT_ID'>
 ```
+### Simulate a real time race?
+See [our guide here.](/docs/guides/recipes/simulation)
 
 ### Subscribe to live race data, including boat/mark position updates and start time updates?
 See [our guide here.](/docs/guides/recipes/realtimeupdates)
+
 
 ### Pull data from a finished race?
 
@@ -40,6 +43,11 @@ See [our guide here.](/docs/guides/recipes/sendmarkupdates)
 
 ### Search for certificates?
 See [our guide here.](/docs/guides/recipes/findcertificates)
+
+### Add nautical charts to my web or mobile app?
+See [our guide here.](/docs/guides/recipes/charts)
+
+![Alt Text](/img/charts_teaser.gif)
 
 ### Do some data science on sailing tracks?
 The best source for sample code to analyze track data is SYRF's [python Jupyter Lab notebooks.](https://github.com/sailing-yacht-research-foundation/ai-sailing-agent/tree/main/notebooks)

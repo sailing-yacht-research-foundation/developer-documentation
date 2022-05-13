@@ -40,13 +40,13 @@ While these examples use anonymous authentication, everything works the same way
 
 ## Step 1) Authenticate:
 
-Anonymous login requires a unique device Id for every session. We recommend doing this from the back end, but if you want to use a client app for
-these requests please ensure you are providing a unique device Id such as a hardware identifier. 
+Anonymous login requires a unique device UUID for every session. We recommend doing this from the back end, but if you want to use a client app for
+these requests please ensure you are providing a unique device Id, and that it is a UUID. 
 
 Make a POST to `https://liveserver-dev.syrf.io/v1/auth/anonymous-login` with a body containing:
 ```
 { 
-    "id":DEVICE-ID
+    "id":DEVICE-UUID
     “devToken”: YOUR-DEVELOPER-API-KEY
 }
 ```
@@ -225,4 +225,6 @@ Ex:
 `https://liveserver-dev.syrf.io/v1/open-competitions?lon=-122.6348876953125&lat=37.73162487017297&radius=1`
 
 The `radius` parameter is in nautical miles.
+
+You may also use the `include_simulations=true` parameter if you are running a simulation and would like to see it in the result.
 
