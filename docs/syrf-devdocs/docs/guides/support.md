@@ -28,7 +28,7 @@ Join the Developer Program for access to our internal GitHub repo documentation.
 
 It's imperative that you fill out the [SYRF Developer Program Form](https://docs.google.com/forms/d/e/1FAIpQLSfXTgxpeqaJ3sCNY4RV_iF7Ex9wbcv3rVjfV4xhCqypvm95Pw/viewform?usp=sf_link) so that we can give your GitHub username access to our repositories. 
 
-Our repositories hold our internal source code behind LivePing and SYRF.io.
+Our repositories hold the internal source code behind LivePing and SYRF.io.
 The READMEs for our backend services provide invaluable details.
 
 * [SYRF.io Source Code](https://github.com/sailing-yacht-research-foundation/authentication-front-end)

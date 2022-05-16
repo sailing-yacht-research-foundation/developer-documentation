@@ -47,6 +47,7 @@ The SYRF backend needs some time to spin-up resources for every race (get the we
 
 ### None of your users have SYRF accounts.
 If none of your users have SYRF accounts you can add tracking to your event in two ways:
+
 * Create an open regatta, so that any anonymous or non-anonymous user can track for your event.
 * Create a private regatta, which will create 1 tracking url for each boat in your regatta. It will be your responsibility to get the correct link to the correct user.
 

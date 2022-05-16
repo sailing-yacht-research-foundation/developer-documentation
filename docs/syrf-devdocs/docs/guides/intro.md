@@ -39,7 +39,7 @@ into as many hands as possible. This guide is explicitly for software engineers 
 
 ## Use Cases
 
-In general the SYRF Developer Platform supports four basic use cases for app developers:
+In general the SYRF Developer Platform supports five basic use cases for app developers:
 
 1. Apps that want to use SYRF accounts for Single Sign On/OIDC. There are several reasons you may want to do this:
     - For an out of the box authentication solution, 
@@ -54,6 +54,7 @@ In general the SYRF Developer Platform supports four basic use cases for app dev
     - Custom players or scoring apps.
 
 4. Data scientists who want to pull data from finished races to analyze in other contexts.
+5. Developer friendly nautical charts.
 
 Note that these use cases are not mutually exclusive, so it's completely possible to combine these guides in new and creative ways.
 
@@ -156,10 +157,15 @@ Most use cases will use the API using the same flow.
 
 Positions sent from the LivePing app are publicly visible IF and ONLY IF they are associated with an event. 
 
-* If as a LivePing user you hit "Start Tracking" and never make hit the "make public" button, your track will stay private, and only your user will be able to read it.
-* If you join an existing event or race from the map view or the event list page, or you make your event public, your track will be publicly visible and all user types will be able to read it.
+* If, as a LivePing user you hit the "Start Tracking" button on the map, your track will stay private, and only your user will be able to read it.
+* If you join an existing event or race from the map view or the event list page, your track will be publicly visible and all user types will be able to read it.
+* All tracks (whether a 'track now' or associated with an event/race) will be visible from a user's MyTracks.
 
 Once an event is published, the event and races becomes publicly visible. 
+Events that are created from the mobile app are automatically published.
+Events that are created from the web app begin in a draft mode and must be manually published.
+
+**All events and event associated tracks are publicly visible.**
 
 #### Publicly visible means everyone on the internet can:
 
@@ -170,10 +176,14 @@ Once an event is published, the event and races becomes publicly visible.
 #### Publicly visible does not mean:
 * Anyone can join or send their tracks into the race.
 
+**Do not confuse visibility with whether an event is open or closed. Events can be 'open regattas' which allow any LivePing user to register and send in tracks, or may be private events which are invite only.**
+
 
 ## REST Requests
 Most of the endpoints are RESTful HTTP endpoints. 
 Here is a sample HTTP request in Curl. There are numerous tools and libraries to make said requests, but the basics are the same.
+
+Don't forget to include your `accept` and `content-type` headers.
 
 ```
 
@@ -192,7 +202,7 @@ Enter this command on your *nix-based terminal with curl installed.
 What does this request do?
 
 * Uses the command line utility curl to make a POST request to the endpoint `/v1/certificates/search`,
-* Sets the session token as the bearer header,
+* Sets the session token as the `bearer` header,
 * Set's the body of the POST to a query (described elsewhere),
 * Tells the listening server to compress the result (optional),
 * Saves the output of the request to a json file. 

@@ -5,7 +5,7 @@ author: Jon Weisbaum
 author_title: SYRF Technical Director
 author_url: https://github.com/jweisbaum
 author_image_url: https://avatars.githubusercontent.com/u/2358174?v=4
-tags: [marksetbot,sdp]
+tags: [expedition,sdp]
 ---
 
 We're humbled to announce that Expedition has joined the SYRF Developer Program.
