@@ -46,7 +46,7 @@ Provide this session token as “token” bearer in the header of future request
 ## Step 2) Open a Websocket
 Now that you have your session token, open a Websocket connection and tell us what data you'd like to subscribe to.
 
-Open websocket on `wss://streaming-server.syrf.io/authenticate?session_token=' + myToken`
+Open websocket on `wss://streaming-server-dev.syrf.io/authenticate?session_token=' + myToken`
 
 Send us the `CompetitionUnit` Id that you'd like to listen to:
 
